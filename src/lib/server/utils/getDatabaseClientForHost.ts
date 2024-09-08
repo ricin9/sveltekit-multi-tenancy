@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
-import { centralDb } from "./db/central";
-import { tenants, customDomains } from "./db/central/schema";
-import { getTenantDbClient } from "./init-db";
-import { getDomainAndType } from "../util";
+import { centralDb } from "../db/central";
+import { tenants, customDomains } from "../db/central/schema";
+import { getTenantDbClient } from "../utils/init-db";
+import { getDomainAndType } from "../../util";
 
 export async function getDatabaseClientForHost(host: string) {
   const { domain, type } = getDomainAndType(host);

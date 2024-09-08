@@ -3,7 +3,7 @@ import {
   TURSO_ORGANIZATION_NAME,
 } from "$env/static/private";
 import { createClient } from "@libsql/client";
-import { tenantTSchema } from "./db/tenant";
+import { tenantTSchema } from "../db/tenant";
 import { drizzle } from "drizzle-orm/libsql";
 
 export const getTenantDbClient = (databaseName: string) => {

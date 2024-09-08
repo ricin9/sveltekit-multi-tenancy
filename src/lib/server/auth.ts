@@ -31,5 +31,8 @@ declare module "lucia" {
       username: string;
       role: ["admin", "normal"];
     };
+    UserId: number;
   }
 }
+
+export type LuciaType = ReturnType<typeof getLuciaForTenant>;

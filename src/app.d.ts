@@ -11,6 +11,7 @@ declare global {
       user: import("lucia").User | null;
       session: import("lucia").Session | null;
       tenantDb: import("$lib/server/db/tenant").TenantDbType | null;
+      lucia: import("$lib/server/auth").LuciaType | null;
     }
   }
 }

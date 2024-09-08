@@ -1,7 +1,6 @@
 import { PUBLIC_DOMAIN } from "$env/static/public";
 import { getLuciaForTenant } from "$lib/server/auth";
-import { getDatabaseClientForHost } from "$lib/server/getDatabaseClientForHost";
-import { getTenantDbClient } from "$lib/server/init-db";
+import { getDatabaseClientForHost } from "$lib/server/utils/getDatabaseClientForHost";
 import { error, type Handle } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -21,9 +20,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   if (!tenantDb) {
     error(404, { message: "Not Found" });
   }
+  event.locals.tenantDb = tenantDb;
 
   /* authenticate users of tenants with lucia */
   const lucia = getLuciaForTenant(tenantDb);
+  event.locals.lucia = lucia;
   const sessionId = event.cookies.get(lucia.sessionCookieName);
   if (!sessionId) {
     event.locals.user = null;
@@ -48,6 +49,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   event.locals.user = user;
   event.locals.session = session;
-  event.locals.tenantDb = tenantDb;
   return resolve(event);
 };
