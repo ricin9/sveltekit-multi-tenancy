@@ -5,3 +5,5 @@
 <head>
   <title>{data.tenantInfo.name}</title>
 </head>
+
+<slot />
