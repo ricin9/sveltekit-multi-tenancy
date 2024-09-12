@@ -18,3 +18,17 @@ export const sessions = sqliteTable("sessions", {
     .references(() => users.id),
   expiresAt: integer("expires_at").notNull(),
 });
+
+export const tasks = sqliteTable("tasks", {
+  id: integer("task_id").primaryKey({ autoIncrement: true }),
+  title: text("title").notNull(),
+  status: text("status").notNull(),
+  label: text("label").notNull(),
+  createdBy: integer("created_by")
+    .references(() => users.id)
+    .notNull(),
+  priority: text("priority").notNull(),
+  createdAt: text("created_at")
+    .notNull()
+    .default(sql`current_timestamp`),
+});

@@ -29,7 +29,7 @@ declare module "lucia" {
     DatabaseUserAttributes: {
       id: number;
       username: string;
-      role: ["admin", "normal"];
+      role: "admin" | "normal";
     };
     UserId: number;
   }

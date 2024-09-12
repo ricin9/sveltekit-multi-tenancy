@@ -11,6 +11,8 @@
   export let data;
   const form = superForm(data.form, { validators: zod(tenantCreationSchema) });
   const { form: formData, message, enhance, delayed } = form;
+
+  // export let form;
 </script>
 
 <Card.Root class="w-full max-w-lg mx-auto">
