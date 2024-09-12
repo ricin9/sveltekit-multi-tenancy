@@ -13,7 +13,7 @@
   const { form: formData, message, enhance, delayed } = form;
 </script>
 
-<Card.Root class="w-full max-w-lg mx-auto">
+<Card.Root class="w-full max-w-lg mx-auto my-8">
   <Card.Header>
     <Card.Title class="text-2xl">Create a tenant</Card.Title>
     <Card.Description>
