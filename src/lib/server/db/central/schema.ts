@@ -16,6 +16,7 @@ export const customDomains = sqliteTable("custom_domains", {
     autoIncrement: true,
   }),
   customDomain: text("custom_domain").unique().notNull(),
+  verified: integer("verified", { mode: "boolean" }).notNull().default(false),
   tenantId: integer("tenant_id")
     .notNull()
     .references(() => tenants.tenantId),

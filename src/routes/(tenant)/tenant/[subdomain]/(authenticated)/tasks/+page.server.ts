@@ -19,7 +19,6 @@ export const actions = {
     const { tenantDb, user } = locals;
     const form = await superValidate(request, zod(createTaskSchema));
 
-    console.log(form.data, form.valid);
     if (!form.valid) return fail(400, { form });
 
     const { title, status, label, priority } = form.data;

@@ -4,16 +4,23 @@ import { tenants, customDomains } from "../db/central/schema";
 import { getTenantDbClient } from "../utils/init-db";
 import { getDomainAndType } from "../../util";
 
-export async function getDatabaseClientForHost(host: string) {
+export async function getTenant(host: string) {
   const { domain, type } = getDomainAndType(host);
 
   if (type === "appDomain") return null;
 
   let databaseName: string = "";
+  let tenant;
   if (type === "subdomain") {
-    const tenant = await centralDb.query.tenants.findFirst({
+    tenant = await centralDb.query.tenants.findFirst({
       where: eq(tenants.subdomain, domain.toLocaleLowerCase()),
-      columns: { databaseName: true },
+      columns: {
+        tenantId: true,
+        name: true,
+        subdomain: true,
+        createdAt: true,
+        databaseName: true,
+      },
     });
 
     if (!tenant) return null;
@@ -27,8 +34,18 @@ export async function getDatabaseClientForHost(host: string) {
 
     if (!data) return null;
     databaseName = data.tenant.databaseName;
+    tenant = await centralDb.query.tenants.findFirst({
+      where: eq(tenants.databaseName, databaseName),
+      columns: {
+        tenantId: true,
+        name: true,
+        subdomain: true,
+        createdAt: true,
+        databaseName: true,
+      },
+    });
   }
 
   const tenantDb = getTenantDbClient(databaseName);
-  return tenantDb;
+  return { tenantDb, tenantInfo: tenant };
 }

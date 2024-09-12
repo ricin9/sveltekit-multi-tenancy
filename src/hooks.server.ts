@@ -1,6 +1,6 @@
 import { PUBLIC_DOMAIN } from "$env/static/public";
 import { getLuciaForTenant } from "$lib/server/auth";
-import { getDatabaseClientForHost } from "$lib/server/utils/getDatabaseClientForHost";
+import { getTenant } from "$lib/server/utils/getTenantInformation";
 import { error, type Handle } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -16,14 +16,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   /* if no database returned for given subdomain or custom domain then the tenant does not exist */
 
-  const tenantDb = await getDatabaseClientForHost(host);
-  if (!tenantDb) {
+  const tenant = await getTenant(host);
+  if (!tenant) {
     error(404, { message: "Not Found" });
   }
-  event.locals.tenantDb = tenantDb;
+  event.locals.tenantDb = tenant.tenantDb;
+  event.locals.tenantInfo = tenant.tenantInfo!;
 
   /* authenticate users of tenants with lucia */
-  const lucia = getLuciaForTenant(tenantDb);
+  const lucia = getLuciaForTenant(tenant.tenantDb);
   event.locals.lucia = lucia;
   const sessionId = event.cookies.get(lucia.sessionCookieName);
   if (!sessionId) {

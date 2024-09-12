@@ -8,7 +8,7 @@
   import { page } from "$app/stores";
 
   export let data;
-  const { user } = data;
+  const { user, tenantInfo } = data;
 
   const routes = [
     {
@@ -36,7 +36,7 @@
         class="flex items-center gap-2 text-lg font-semibold md:text-base"
       >
         <File class="h-6 w-6" />
-        <span class="sr-only">Miloudi Multi Tenancy example</span>
+        <span class="sr-only">{tenantInfo.name}</span>
       </a>
 
       {#each routes as route}
@@ -69,7 +69,7 @@
         <nav class="grid gap-6 text-lg font-medium">
           <a href="##" class="flex items-center gap-2 text-lg font-semibold">
             <File class="h-6 w-6" />
-            <span class="sr-only">Miloudi Multi Tenancy Demo</span>
+            <span class="sr-only">{tenantInfo.name}</span>
           </a>
           {#each routes as route}
             {#if route.adminOnly === false || user.role === "admin"}

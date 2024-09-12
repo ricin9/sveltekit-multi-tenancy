@@ -12,6 +12,13 @@ declare global {
       session: import("lucia").Session | null;
       tenantDb: import("$lib/server/db/tenant").TenantDbType | null;
       lucia: import("$lib/server/auth").LuciaType | null;
+      tenantInfo: {
+        tenantId: number;
+        name: string;
+        subdomain: string;
+        createdAt: string;
+        databaseName: string;
+      } | null;
     }
   }
 }

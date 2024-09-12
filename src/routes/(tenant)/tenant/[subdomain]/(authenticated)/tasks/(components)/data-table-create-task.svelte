@@ -24,7 +24,6 @@
       if (form.message && form.message.task) {
         const task = form.message.task[0];
         task.createdBy = { id: data.user.id, username: data.user.username };
-        console.log(task);
         $tasks = [...$tasks, form.message.task[0]];
       }
     },
