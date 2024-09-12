@@ -1,9 +1,10 @@
 <script>
-  import { File } from "svelte-radix";
+  import File from "svelte-radix/File.svelte";
   import * as DropdownMenu from "$lib/client/components/ui/dropdown-menu/";
   import * as Sheet from "$lib/client/components/ui/sheet/";
   import { Button } from "$ui/button";
-  import { CircleUser, Menu } from "lucide-svelte";
+  import CircleUser from "lucide-svelte/icons/circle-user";
+  import Menu from "lucide-svelte/icons/menu";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
 

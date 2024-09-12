@@ -5,7 +5,7 @@
   import { zod } from "sveltekit-superforms/adapters";
   import { createUserSchema } from "./schema.js";
   import * as Form from "$ui/form";
-  import { LoaderCircle } from "lucide-svelte";
+  import LoaderCircle from "lucide-svelte/icons/loader-circle";
   import * as RadioGroup from "$lib/client/components/ui/radio-group";
 
   export let data;

@@ -5,7 +5,7 @@
   import { zod } from "sveltekit-superforms/adapters";
   import { customDomainSchema } from "./schema.js";
   import * as Form from "$ui/form";
-  import { LoaderCircle } from "lucide-svelte";
+  import LoaderCircle from "lucide-svelte/icons/loader-circle";
   import Separator from "$ui/separator/separator.svelte";
   import { Label } from "$ui/label/index.js";
   import { PUBLIC_DOMAIN } from "$env/static/public";

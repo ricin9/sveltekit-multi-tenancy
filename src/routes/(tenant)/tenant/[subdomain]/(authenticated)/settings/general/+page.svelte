@@ -5,7 +5,7 @@
   import { zod } from "sveltekit-superforms/adapters";
   import { tenantNameSchema } from "./schema.js";
   import * as Form from "$ui/form";
-  import { LoaderCircle } from "lucide-svelte";
+  import LoaderCircle from "lucide-svelte/icons/loader-circle";
   import Separator from "$ui/separator/separator.svelte";
 
   export let data;

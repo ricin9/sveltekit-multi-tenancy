@@ -12,8 +12,8 @@
   import { Input } from "$ui/input";
   import * as Select from "$ui/select/index.js";
   import { labels, priorities, statuses } from "../(data)/data";
-  import { PlusCircled } from "svelte-radix";
-  import { LoaderCircle } from "lucide-svelte";
+  import PlusCircled from "svelte-radix/PlusCircled.svelte";
+  import LoaderCircle from "lucide-svelte/icons/loader-circle";
   import { tasks } from "../tasksStore";
 
   export let data;
