@@ -17,6 +17,7 @@ export const customDomains = sqliteTable("custom_domains", {
   }),
   customDomain: text("custom_domain").unique().notNull(),
   verified: integer("verified", { mode: "boolean" }).notNull().default(false),
+  cloudflareHostnameId: text("cloudflare_hostname_id"),
   tenantId: integer("tenant_id")
     .notNull()
     .references(() => tenants.tenantId),

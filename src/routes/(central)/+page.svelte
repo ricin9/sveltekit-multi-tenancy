@@ -45,9 +45,8 @@
         />
       </Form.Control>
       <Form.Description
-        >Subdomain should only contain characters and hyphens {$formData.subdomain +
-          "." +
-          PUBLIC_DOMAIN}</Form.Description
+        >Subdomain should only contain characters and hyphens <br
+        />{$formData.subdomain + "." + PUBLIC_DOMAIN}</Form.Description
       >
       <Form.FieldErrors />
     </Form.Field>

@@ -11,6 +11,8 @@
   import { PUBLIC_DOMAIN } from "$env/static/public";
   import FormDescription from "$ui/form/form-description.svelte";
   import Badge from "$ui/badge/badge.svelte";
+  import { enhance as svEnhance } from "$app/forms";
+  import { invalidateAll } from "$app/navigation";
 
   export let data;
   const form = superForm(data.form, {
@@ -64,6 +66,10 @@
             <Form.FieldErrors />
           </Form.Field>
         {/if}
+
+        {#if data.domainErrors.length > 0}
+          <p class="text-sm text-yellow-500">{data.domainErrors.join(",")}</p>
+        {/if}
       </Card.Content>
       <Card.Footer class="border-t px-6 py-4 gap-2">
         <Form.Button
@@ -73,6 +79,16 @@
               class="mr-2 h-4 w-4 animate-spin"
             />{/if}Save</Form.Button
         >
+        {#if Boolean(data.domainInfo.customDomain)}
+          <form method="post" action="?/deleteCustomDomain" use:svEnhance>
+            <Form.Button>Delete</Form.Button>
+          </form>
+        {/if}
+        {#if data.domainErrors.length > 0}
+          <Form.Button on:click={async () => await invalidateAll()}
+            >Re-Check Domain</Form.Button
+          >
+        {/if}
         {#if $message}
           <p class="text-green-600 text-sm">{$message}</p>
         {/if}
