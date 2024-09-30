@@ -1,0 +1,152 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "21c749e0-a1e3-430d-8e9a-dd27edc72dba",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "custom_domains": {
+      "name": "custom_domains",
+      "columns": {
+        "custom_domain_id": {
+          "name": "custom_domain_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "custom_domain": {
+          "name": "custom_domain",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "verified": {
+          "name": "verified",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "cloudflare_hostname_id": {
+          "name": "cloudflare_hostname_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "tenant_id": {
+          "name": "tenant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "current_timestamp"
+        }
+      },
+      "indexes": {
+        "custom_domains_custom_domain_unique": {
+          "name": "custom_domains_custom_domain_unique",
+          "columns": [
+            "custom_domain"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "custom_domains_tenant_id_tenants_tenant_id_fk": {
+          "name": "custom_domains_tenant_id_tenants_tenant_id_fk",
+          "tableFrom": "custom_domains",
+          "tableTo": "tenants",
+          "columnsFrom": [
+            "tenant_id"
+          ],
+          "columnsTo": [
+            "tenant_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "tenants": {
+      "name": "tenants",
+      "columns": {
+        "tenant_id": {
+          "name": "tenant_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "subdomain": {
+          "name": "subdomain",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "database_name": {
+          "name": "database_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "current_timestamp"
+        }
+      },
+      "indexes": {
+        "tenants_subdomain_unique": {
+          "name": "tenants_subdomain_unique",
+          "columns": [
+            "subdomain"
+          ],
+          "isUnique": true
+        },
+        "tenants_database_name_unique": {
+          "name": "tenants_database_name_unique",
+          "columns": [
+            "database_name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
