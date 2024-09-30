@@ -135,6 +135,10 @@ As of the date of writing this readme, there is no way to add wildcard subdomain
 
 You can use Cloudflare Pages, but you would have to add each created subdomain and custom tenant domain either manually or by using the Cloudflare API. I prefer automatically for this demo this is why I used Cloudflare Workers instead.
 
+## How are SSL certificates installed for custom tenant domains
+
+There are two methods: HTTP and TXT, ([Source](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)), HTTP is the fastest one as it only required the tenant to point their domain towards your `PUBLIC_DOMAIN` with CNAME dns record after having added it through the tenant settings in the web app and the domain ssl will be installed automatically and will be routed to your app.
+
 ## Why is an apex domain required
 
 It is not required unless you do not have the _Entreprise plan_. Because of you were to set `PUBLIC_DOMAIN` to `sub.example.com`, Cloudflare will not install SSL Certificates for 3rd layer `*.sub.example.com` unless you are on `Entreprise Plan`. So it's just easier using an apex domain.
