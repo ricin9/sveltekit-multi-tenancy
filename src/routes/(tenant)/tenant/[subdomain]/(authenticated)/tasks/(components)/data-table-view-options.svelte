@@ -26,7 +26,7 @@
     <Button
       variant="outline"
       size="sm"
-      class="ml-auto hidden h-8 lg:flex"
+      class="ml-auto h-8 lg:flex"
       builders={[builder]}
     >
       <MixerHorizontal class="mr-2 h-4 w-4" />

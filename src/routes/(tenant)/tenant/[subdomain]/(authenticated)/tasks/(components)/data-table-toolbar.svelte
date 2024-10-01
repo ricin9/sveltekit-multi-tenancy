@@ -50,8 +50,8 @@
   );
 </script>
 
-<div class="flex items-center justify-between">
-  <div class="flex flex-1 items-center space-x-2">
+<div class="flex items-center justify-between flex-wrap gap-2">
+  <div class="flex flex-1 items-center gap-2 flex-wrap">
     <Input
       placeholder="Filter tasks..."
       class="h-8 w-[150px] lg:w-[250px]"
@@ -87,7 +87,7 @@
     {/if}
   </div>
 
-  <div class="flex space-x-2">
+  <div class="flex flex-wrap gap-2 mb-2 sm:mb-0">
     <DataTableCreateTask {data} />
     <DataTableViewOptions {tableModel} />
   </div>

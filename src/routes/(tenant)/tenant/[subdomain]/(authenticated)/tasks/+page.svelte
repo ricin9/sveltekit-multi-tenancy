@@ -17,9 +17,6 @@
         Here's a list of your tasks for this month!
       </p>
     </div>
-    <!-- <div class="flex items-center space-x-2">
-      <UserNav user={data.user} />
-    </div> -->
   </div>
   <DataTable {data} />
 </div>

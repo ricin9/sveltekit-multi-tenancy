@@ -8,10 +8,15 @@
   import { cn } from "$lib/client/shadcn-utils.js";
   import { Separator } from "$lib/client/components/ui/separator/index.js";
   import { Badge } from "$lib/client/components/ui/badge/index.js";
+  import type { SvelteComponent, SvelteComponentTyped } from "svelte";
 
   export let filterValues: string[] = [];
   export let title: string;
-  export let options = [] as typeof statuses;
+  export let options: readonly {
+    value: string;
+    label: string;
+    icon: any;
+  }[] = [];
   export let counts: { [index: string]: number } = {};
 
   let open = false;
