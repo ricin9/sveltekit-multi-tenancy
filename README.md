@@ -6,11 +6,11 @@ Demo : [https://miloudi-mutli-tenancy.software/](https://miloudi-mutli-tenancy.s
 
 ## Features
 
-- Multi-tenancy with one database per tenant
-- Subdomain per tenant
-- Custom tenant domain with auto SSL using Cloudflare for SaaS
-- Tenants can download their entire database dump.
-- Deployed on Cloudflare Workers
+- Multi-tenancy with one database per tenant using [Turso Multi-DB Schemas](https://docs.turso.tech/features/multi-db-schemas)
+- Subdomain per tenant, achieved by wildcard subdomain and [SvelteKit hooks](https://kit.svelte.dev/docs/hooks#universal-hooks-reroute)
+- Custom tenant domain with auto SSL using [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)
+- Tenants can download their entire database dump. [Reference](https://docs.turso.tech/sdk/http/reference#get-dump)
+- Deployed on [Cloudflare Workers](https://developers.cloudflare.com/workers/)
 
 ## Prerequisites
 
